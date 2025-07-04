@@ -160,10 +160,8 @@ const Dashboard = () => {
           }
         });
 
-        console.log("🧩 CSV Mapping (WAN ID => IP):", map);
         setMapping(map);
       } catch (error) {
-        console.error('❌ Failed to load CSV:', error);
       }
     };
 
@@ -177,7 +175,6 @@ const Dashboard = () => {
           pdfMap[wanId] = url;
         }
       });
-      console.log(`📁 Extracted ${label} PDFs (WAN ID => URL):`, pdfMap);
       return pdfMap;
     };
 
@@ -189,7 +186,6 @@ const Dashboard = () => {
   const getWanIdByIp = (ip) => {
     const entry = Object.entries(mapping).find(([wanId, publicIp]) => publicIp === ip);
     const wanId = entry?.[0] || '';
-    console.log(`🔍 Selected IP: ${ip} ➡️ Mapped WAN ID: ${wanId}`);
     return wanId;
   };
 
@@ -212,8 +208,7 @@ const Dashboard = () => {
   const wanIdFromIp = getWanIdByIp(selectedIP);
   const selectedPDF = overPDFs[wanIdFromIp] || underPDFs[wanIdFromIp];
 
-  console.log("📡 Over Provisioned IPs:", overIPs);
-  console.log("📡 Under Provisioned IPs:", underIPs);
+  
 
   return (
     <div className={styles.container}>
