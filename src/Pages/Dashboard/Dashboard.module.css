@@ -1,35 +1,182 @@
+:root {
+  --accent-green: #6EE7B7;
+  --accent-yellow: #FACC15;
+  --accent-orange: #FB923C;
+  --button-gradient-start: #34D399;
+  --button-gradient-end: #10B981;
+
+  --signin-bg-dark: #121626;
+  --signin-bg-mid: #1A1F31;
+  --signin-bg-light: #262B40;
+
+  --text-light: #ffffff;
+  --text-dark: #cccccc;
+
+  /* NEW: Color for the animated lines/dots */
+  --animated-line-color: rgba(110, 231, 183, 0.08); /* Subtle green tint, low opacity */
+  --animated-line-size: 2px; /* Size of the line/dot */
+  --animated-line-spacing: 20px; /* Spacing between lines/dots */
+}
+
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes footer to bottom */
-    /* background: linear-gradient(to bottom right, #1f1c2c, #928dab, #00e0ff); */
-    background: linear-gradient(to bottom, #000428, #004e92, #0074e4);
-    /* background: linear-gradient(to bottom right, #000428, #004e92, #0074e4); */
-    padding: 2rem;
-    color: white;
-    box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* Main background gradient */
+  background:
+    linear-gradient(to bottom,
+      var(--signin-bg-dark) 0%,
+      var(--signin-bg-mid) 50%,
+      var(--signin-bg-light) 100%
+    ),
+    /* NEW: Animated line background layer */
+    repeating-linear-gradient(
+      45deg, /* Angle of the lines */
+      transparent,
+      transparent var(--animated-line-size),
+      var(--animated-line-color) var(--animated-line-size),
+      var(--animated-line-color) calc(var(--animated-line-size) * 2)
+    );
+
+  /* Adjust background size and position for animation */
+  background-size: 100% 100%, var(--animated-line-spacing) var(--animated-line-spacing);
+  background-position: 0 0, 0 0; /* Initial position for both layers */
+
+  animation: moveLines 20s linear infinite; /* Animation for the lines */
+
+  padding: 1rem;
+  color: var(--text-light);
+  box-sizing: border-box;
+}
+
+/* NEW: Keyframes for the line movement */
+@keyframes moveLines {
+  to {
+    background-position: 0% var(--animated-line-spacing); /* Moves lines vertically */
+    /* For diagonal movement (matching 45deg): background-position: var(--animated-line-spacing) var(--animated-line-spacing); */
   }
-  
+}
+
+/* ... rest of your CSS remains the same ... */
+
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.recommendationWrapper {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.headline-green {
+  color: var(--accent-green);
+}
+
+.headline-yellow {
+  color: var(--accent-yellow);
+}
+
+.automate-text {
+  color: var(--text-light);
+}
+
+.backups-text {
+  color: var(--accent-orange);
+}
+
+.book-a-demo-button {
+  background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
+  color: var(--text-light);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
   .cards {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
   }
-  
-  .recommendationWrapper {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  
+
   .footer {
-    text-align: center;
-    font-size: 0.75rem;
-    opacity: 0.7;
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 2rem;
+  }
+
+  .cards {
+    gap: 2rem;
     margin-top: 2rem;
   }
-  
+
+  .footer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding: 3rem;
+  }
+
+  .cards {
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .footer {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    padding: 4rem;
+  }
+
+  .cards {
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .footer {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    padding: 5rem;
+  }
+
+  .cards {
+    gap: 4rem;
+    margin-top: 4rem;
+  }
+
+  .footer {
+    font-size: 1.2rem;
+  }
+}

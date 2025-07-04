@@ -1,87 +1,135 @@
+/* Add this at the top of your LinkCard.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;600&family=Space+Grotesk:wght@400&display=swap');
+
+/* --- Light Theme Variables for this specific card (Optional, but good practice for clarity) --- */
+/* If this card is *always* light regardless of global theme, these can be local.
+   If the global theme can switch, you'd define light/dark variables in :root and switch them. */
+:root {
+  --light-card-bg: #f2f8ff; /* Very light blue/grey */
+  --light-card-text-primary: #000; /* Black for primary text */
+  --light-card-text-secondary: #333; /* Dark grey for secondary text/borders */
+  --light-card-border: #ccc; /* Light grey border */
+  --light-card-accent-blue: #007bff; /* A standard bright blue for buttons/accents */
+  --light-card-accent-blue-hover: #0056b3; /* Darker blue for hover */
+}
+
+
 .card {
-    font-family: 'Space Grotesk', sans-serif;
-    background-color: #f2f8ff;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    width: 100%;
-    max-width: 850px;
-    margin: auto;
-    box-sizing: border-box;
-    color: #000;
-    overflow: hidden;
-  }
-  
-  /* Header styles */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-  }
-  
-  .logo {
-    height: 30px;
-    object-fit: contain;
-  }
-  
-  .title {
-    text-align: center;
-    flex-grow: 1;
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #000;
-  }
-  
-  .closeButton {
-    margin-right: auto;
-  }
-  
-  /* IP address styling */
-  .ip {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  /* Markdown text block */
-  .markdown {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #000;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-  }
-  
-  /* Footer */
-  .footer {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #000;
-    border-top: 1px solid #ccc;
-    padding-top: 0.5rem;
-    margin-top: 1rem;
-  }
-  
-  /* Button styles */
-  .buttonGroup {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .button {
-    background-color: #00bfff;
-    border: none;
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #009ac7;
-  }
-  
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--light-card-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  box-sizing: border-box;
+  color: var(--light-card-text-primary);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for depth */
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.logo {
+  height: 30px;
+  object-fit: contain;
+}
+
+.title {
+  text-align: center;
+  flex-grow: 1;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--light-card-text-primary);
+}
+
+.closeButton {
+  margin-right: auto;
+  /* Assuming this will be an icon or a button. Add specific styles if needed */
+  color: var(--light-card-text-secondary); /* A subtle color for a close icon */
+}
+
+/* IP address styling */
+.ip {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--light-card-text-primary); /* Ensure it's black */
+}
+
+/* Markdown text block */
+.markdown {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--light-card-text-primary); /* Ensure it's black */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--light-card-text-secondary); /* Slightly muted for footer */
+  border-top: 1px solid var(--light-card-border); /* Consistent light border */
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Button styles */
+.buttonGroup {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: var(--light-card-accent-blue);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--light-card-accent-blue-hover);
+}
+
+.graphsSection {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.graphsTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--light-card-text-primary); /* Changed to black for light theme */
+  margin-bottom: 1rem;
+}
+
+.graphContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.graphImage {
+  max-width: 100%;
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--light-card-border); /* Lighter border for images */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
+  margin-bottom: 1rem;
+}
