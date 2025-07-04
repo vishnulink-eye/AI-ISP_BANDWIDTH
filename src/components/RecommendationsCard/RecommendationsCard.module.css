@@ -28,31 +28,31 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for depth */
 }
 
-/* Header styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+  position: relative;
 }
 
 .logo {
-  height: 30px;
+  height: 60px;
   object-fit: contain;
 }
 
 .title {
-  text-align: center;
-  flex-grow: 1;
-  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--light-card-text-primary);
+  white-space: nowrap;
 }
 
 .closeButton {
   margin-right: auto;
-  /* Assuming this will be an icon or a button. Add specific styles if needed */
   color: var(--light-card-text-secondary); /* A subtle color for a close icon */
 }
 
