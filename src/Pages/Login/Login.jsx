@@ -5,6 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import MicrosoftIcon from '@mui/icons-material/Microsoft';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import iconGrid from '../../assets/bgimage11.png';
 import WifiIcon from '@mui/icons-material/Wifi';
 import RouterIcon from '@mui/icons-material/Router';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -15,7 +16,7 @@ import NetworkCheckIcon from '@mui/icons-material/NetworkCheck';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import GridViewIcon from '@mui/icons-material/GridView';
 
-import logo from '../../assets/linkeye_logo 1.png'; // Make sure this path is correct
+import logo from '../../assets/linkeye1.svg'; // Make sure this path is correct
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ onLoginSuccess }) => {
@@ -68,7 +69,7 @@ const Login = ({ onLoginSuccess }) => {
         <img src={logo} alt="LinkEye" className={styles.logo} />
         <h1>Hi, Welcome Back!</h1>
         <p>Let's get started. Sign in to continue.</p>
-        <div className={styles.iconGrid}>
+        {/* <div className={styles.iconGrid}>
   <div className={styles.icon}><WifiIcon fontSize="medium" /></div>
   <div className={styles.icon}><RouterIcon fontSize="medium"/></div>
   <div className={styles.icon}><SecurityIcon fontSize="medium"/></div>
@@ -78,7 +79,8 @@ const Login = ({ onLoginSuccess }) => {
   <div className={styles.icon}><NetworkCheckIcon fontSize="medium"/></div>
   <div className={styles.icon}><BarChartIcon fontSize="medium"/></div>
   <div className={styles.icon}><GridViewIcon fontSize="medium"/></div>
-</div>
+</div> */}
+<img src={iconGrid} alt="Network Icon Grid" className={styles.iconGridImage} />
         <h3><span>We simplify </span><strong>Network</strong></h3>
         <h3 className={styles.greenText}>Operations</h3>
         <p className={styles.subText}>Secure access to your network management system</p>

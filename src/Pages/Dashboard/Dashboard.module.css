@@ -42,7 +42,7 @@
 
   /* Adjust background size and position for animation */
   background-size: 100% 100%, var(--animated-line-spacing) var(--animated-line-spacing);
-  background-position: 0 0, 0 0; /* Initial position for both layers */
+  background-position: 0 0, 0 0;
 
   animation: moveLines 20s linear infinite; /* Animation for the lines */
 

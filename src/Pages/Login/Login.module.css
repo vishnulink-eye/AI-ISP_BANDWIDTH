@@ -59,6 +59,11 @@
   align-items: center;
   justify-content: center;
 }
+.iconGridImage {
+    width: 300px; /* or use height if preferred */
+    height: auto;
+    margin: 2rem 0;
+  }
 
 .left h3 {
   font-size: 1.5rem;
@@ -146,7 +151,7 @@
   
   /* Hover effect */
   :global(.MuiTab-root:hover) {
-    background-color: #f6fafe;
+    background-color: #444546;
   }
   
   /* Selected tab styling */
@@ -313,16 +318,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background-color: #d4a307;
+    color: #000;
+    padding: 0;
+    margin: 10;
+    box-sizing: border-box;
   }
   
   .iconCenter {
     background: linear-gradient(145deg, #f5c116, #c69002);
   }
+  
   
 
   .formWrapper {
