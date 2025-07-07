@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* === Left Panel === */
+.left {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  height: 50px;
+  margin-bottom: 2rem;
+}
+
+.left h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.left p {
+  color: #ccc;
+  margin: 1rem 0 2rem;
+}
+
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 10px;
+  margin: 2rem 0;
+}
+
+.icon,
+.iconCenter {
+  background: #d4a307;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.iconCenter {
+  grid-column: 2;
+  grid-row: 2;
+  background: linear-gradient(145deg, #f5c116, #c69002);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left h3 {
+  font-size: 1.5rem;
+  margin: 0.2rem;
+}
+
+.greenText {
+  color: #00c853;
+  font-weight: 600;
+}
+
+.subText {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* === Right Panel === */
+.right {
+  flex: 1;
+  background-color: #0f172a;
+  color: #fff;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.right h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.right p {
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.formWrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* === MUI Tabs Styling === */
+.tabs {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    background-color: #1e293b;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid #eef0f3;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Base tab styling */
+  :global(.MuiTab-root) {
+    color: #ffffff; 
+    text-transform: none;
+    font-weight: 500;
+    min-width: 140px;
+    font-size: 0.95rem;
+    height: 40px;
+    padding: 6px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    background-color: transparent;
+  }
+  
+  /* Set white text explicitly for tab content */
+  :global(.MuiTab-root .MuiTab-wrapper) {
+    color: #ffffff;
+  }
+  
+  /* Hover effect */
+  :global(.MuiTab-root:hover) {
+    background-color: #f6fafe;
+  }
+  
+  /* Selected tab styling */
+  :global(.MuiTab-root.Mui-selected) {
+    background: linear-gradient(90deg, #facc15, #d4a307);
+    color: #000; /* Ensure outer tab is black */
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(250, 204, 21, 0.3);
+    border: 1px solid #facc15;
+  }
+  
+  /* Set black text explicitly for selected tab content */
+  :global(.MuiTab-root.Mui-selected .MuiTab-wrapper) {
+    color: #f2ebeb;
+  }
+  
+  /* Hide default MUI indicator */
+  :global(.MuiTabs-indicator) {
+    display: none;
+  }
+  
+   
+  
+  
+
+/* TextField Custom Styling */
+.textField :global(.MuiOutlinedInput-root) {
+    background-color: #1e293b;
+    border-radius: 6px;
+    color: #fff;
+  }
+  
+  .textField :global(.MuiInputLabel-root) {
+    color: #94a3b8;
+  }
+  
+  .textField :global(.MuiOutlinedInput-notchedOutline) {
+    border-color: #334155;
+  }
+  
+  .textField :global(.Mui-focused .MuiOutlinedInput-notchedOutline) {
+    border-color: #facc15;
+  }
+  
+  .textField :global(.MuiInputBase-input) {
+    color: #fff;
+  }
+  
+  .textField :global(.MuiInputLabel-root.Mui-focused) {
+    color: #facc15;
+  }
+  
+
+/* Error Text */
+.errorText {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Remember/Forgot actions */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0 1rem;
+}
+
+.forgot {
+  color: #facc15;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Login Button */
+.loginBtn {
+  background: linear-gradient(90deg, #facc15, #d4a307);
+  color: #000;
+  font-weight: 600;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  text-transform: none;
+}
+
+/* Divider */
+.divider {
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+  color: #888;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  height: 1px;
+  width: 40%;
+  background: #334155;
+  position: absolute;
+  top: 50%;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+/* OAuth Buttons */
+.oauthButtons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.oauthButton {
+  text-transform: none;
+  font-weight: 500;
+  color: #fff !important;
+  border-color: #334155 !important;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.footer span {
+  color: #facc15;
+  cursor: pointer;
+}
+
+/* === Responsive === */
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left,
+  .right {
+    flex: none;
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .iconGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon,
+  .iconCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #d4a307;
+  }
+  
+  .iconCenter {
+    background: linear-gradient(145deg, #f5c116, #c69002);
+  }
+  
+
+  .formWrapper {
+    max-width: 100%;
+  }
+}
