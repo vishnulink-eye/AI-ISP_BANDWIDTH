@@ -1,45 +1,3 @@
-// import React, { useState } from 'react';
-// import Header from '../../components/Header/Header';
-// import LinkCard from '../../components/LinkCard/LinkCard';
-// import RecommendationsCard from '../../components/RecommendationsCard/RecommendationsCard';
-// import styles from './Dashboard.module.css';
-
-// const Dashboard = () => {
-//   const [selectedIP, setSelectedIP] = useState('');
-
-//   const overProvisioned = ['XX.XX.XXX.01', 'XX.XX.XXX.02', 'XX.XX.XXX.03'];
-//   const underProvisioned = ['XX.XX.XXX.21', 'XX.XX.XXX.22'];
-
-//   const handleIPSelect = (ip) => {
-//     setSelectedIP(ip);
-//   };
-//   const handleClose = () => {
-//     setSelectedIP('');
-//   };
-
-//   return (
-//     <div className={styles.container}>
-//   <div>
-//     <Header />
-//     <div className={styles.cards}>
-//       <LinkCard title="Over provisioned Links" links={overProvisioned} onSelectIP={handleIPSelect} />
-//       <LinkCard title="Under Provisioned Links" links={underProvisioned} onSelectIP={handleIPSelect} />
-//     </div>
-
-//     {selectedIP && (
-//       <div className={styles.recommendationWrapper}>
-//         <RecommendationsCard ip={selectedIP} onClose={handleClose} />
-//       </div>
-//     )}
-//   </div>
-
-//   <p className={styles.footer}>AI Team@2025</p>
-// </div>
-
-//   );
-// };
-
-// export default Dashboard;
 
 
 
@@ -54,8 +12,8 @@ const Dashboard = () => {
   const [underProvisioned, setUnderProvisioned] = useState({});
   const [selectedIP, setSelectedIP] = useState('');
 
-  const overFiles = import.meta.glob('../../over_provisioned/*.json', { eager: true });
-  const underFiles = import.meta.glob('../../under_provisioned/*.json', { eager: true });
+  const overFiles = import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
+  const underFiles = import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
 
   useEffect(() => {
     const extractIPData = (fileMap) => {

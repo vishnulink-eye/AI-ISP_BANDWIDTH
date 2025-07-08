@@ -16,7 +16,7 @@ import NetworkCheckIcon from '@mui/icons-material/NetworkCheck';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import GridViewIcon from '@mui/icons-material/GridView';
 
-import logo from '../../assets/linkeye_logo 1.png'; 
+import logo from '../../assets/linkeye1.svg'; 
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ onLoginSuccess }) => {
