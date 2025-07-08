@@ -97,7 +97,7 @@
 .right h2 {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .right p {
@@ -112,21 +112,20 @@
   text-align: center;
 }
 
-/* === MUI Tabs Styling === */
 .tabs {
     margin-bottom: 1.5rem;
     display: flex;
     justify-content: center;
-    background-color: #1e293b;
+    background-color: #f1f2f5;
     padding: 4px;
     border-radius: 8px;
     border: 1px solid #eef0f3;
     width: fit-content;
+    
     margin-left: auto;
     margin-right: auto;
   }
   
-  /* Base tab styling */
   :global(.MuiTab-root) {
     color: #ffffff; 
     text-transform: none;
@@ -144,31 +143,29 @@
     background-color: transparent;
   }
   
-  /* Set white text explicitly for tab content */
   :global(.MuiTab-root .MuiTab-wrapper) {
     color: #ffffff;
   }
   
-  /* Hover effect */
   :global(.MuiTab-root:hover) {
-    background-color: #444546;
+    background-color: #1e293b;
+     color: #ffffff;
+     border-radius: 6px;
   }
   
-  /* Selected tab styling */
   :global(.MuiTab-root.Mui-selected) {
     background: linear-gradient(90deg, #facc15, #d4a307);
-    color: #000; /* Ensure outer tab is black */
+    color: #000; 
     font-weight: 600;
     box-shadow: 0 2px 6px rgba(250, 204, 21, 0.3);
+    border-radius: 5px;
     border: 1px solid #facc15;
   }
   
-  /* Set black text explicitly for selected tab content */
   :global(.MuiTab-root.Mui-selected .MuiTab-wrapper) {
     color: #f2ebeb;
   }
   
-  /* Hide default MUI indicator */
   :global(.MuiTabs-indicator) {
     display: none;
   }
@@ -181,7 +178,8 @@
 .textField :global(.MuiOutlinedInput-root) {
     background-color: #1e293b;
     border-radius: 6px;
-    color: #fff;
+    color: #f2e206;
+   
   }
   
   .textField :global(.MuiInputLabel-root) {
@@ -193,7 +191,7 @@
   }
   
   .textField :global(.Mui-focused .MuiOutlinedInput-notchedOutline) {
-    border-color: #facc15;
+    border-color: #f5c504;
   }
   
   .textField :global(.MuiInputBase-input) {
