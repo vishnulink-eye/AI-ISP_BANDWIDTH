@@ -1,27 +1,111 @@
 
 
 
+// import React, { useEffect, useState } from 'react';
+// import Header from '../../components/Header/Header';
+// import LinkCard from '../../components/LinkCard/LinkCard';
+// import RecommendationsCard from '../../components/RecommendationsCard/RecommendationsCard';
+// import styles from './Dashboard.module.css';
+
+// const Dashboard = ({email}) => {
+//   const [overProvisioned, setOverProvisioned] = useState({});
+//   const [underProvisioned, setUnderProvisioned] = useState({});
+//   const [selectedIP, setSelectedIP] = useState('');
+
+//   // const overFiles = import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
+//   // const underFiles = import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
+
+//   const overFiles = email === 'admin@decathlon.com'
+//   ? import.meta.glob('../../Over-Provisioned-decathlon/*.json', { eager: true })
+//   : import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
+
+// const underFiles = email === 'admin@decathlon.com'
+//   ? import.meta.glob('../../Under-Provisioned-decathlon/*.json', { eager: true })
+//   : import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
+
+//   useEffect(() => {
+//     const extractIPData = (fileMap) => {
+//       const ipDataMap = {};
+//       Object.entries(fileMap).forEach(([path, mod]) => {
+//         const ip = path.split('/').pop().replace('.json', '');
+//         const jsonData = mod.default;
+//         ipDataMap[ip] = Array.isArray(jsonData) ? jsonData[0] : jsonData;
+//       });
+//       return ipDataMap;
+//     };
+
+//     setOverProvisioned(extractIPData(overFiles));
+//     setUnderProvisioned(extractIPData(underFiles));
+//   }, []);
+
+//   const handleIPSelect = (ip) => {
+//     setSelectedIP(ip);
+//   };
+
+//   const handleClose = () => {
+//     setSelectedIP('');
+//   };
+
+//   const selectedData = overProvisioned[selectedIP] || underProvisioned[selectedIP];
+
+//   return (
+//     <div className={styles.container}>
+//       <div>
+//         <Header email={email} />
+//         <div className={styles.cards}>
+//           <LinkCard
+//             title="Over provisioned Links"
+//             links={Object.keys(overProvisioned)}
+//             selectedIP={selectedIP}
+//             onSelectIP={handleIPSelect}
+//           />
+//           <LinkCard
+//             title="Under Provisioned Links"
+//             links={Object.keys(underProvisioned)}
+//             selectedIP={selectedIP}
+//             onSelectIP={handleIPSelect}
+//           />
+//         </div>
+
+//         {selectedIP && selectedData && (
+//           <div className={styles.recommendationWrapper}>
+//             <RecommendationsCard ip={selectedIP} data={selectedData} onClose={handleClose} />
+//           </div>
+//         )}
+//       </div>
+
+//       <p className={styles.footer}>AI Team@2025</p>
+//     </div>
+//   );
+// };
+
+// export default Dashboard;
+
+
+
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import LinkCard from '../../components/LinkCard/LinkCard';
 import RecommendationsCard from '../../components/RecommendationsCard/RecommendationsCard';
 import styles from './Dashboard.module.css';
+import { IconButton, Tooltip } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
 
-const Dashboard = ({email}) => {
+const Dashboard = ({ email }) => {
   const [overProvisioned, setOverProvisioned] = useState({});
   const [underProvisioned, setUnderProvisioned] = useState({});
   const [selectedIP, setSelectedIP] = useState('');
+  const navigate = useNavigate();
 
-  // const overFiles = import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
-  // const underFiles = import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
-
+  // Conditional file loading based on email
   const overFiles = email === 'admin@decathlon.com'
-  ? import.meta.glob('../../Over-Provisioned-decathlon/*.json', { eager: true })
-  : import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
+    ? import.meta.glob('../../Over-Provisioned-decathlon/*.json', { eager: true })
+    : import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
 
-const underFiles = email === 'admin@decathlon.com'
-  ? import.meta.glob('../../Under-Provisioned-decathlon/*.json', { eager: true })
-  : import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
+  const underFiles = email === 'admin@decathlon.com'
+    ? import.meta.glob('../../Under-Provisioned-decathlon/*.json', { eager: true })
+    : import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
 
   useEffect(() => {
     const extractIPData = (fileMap) => {
@@ -46,10 +130,23 @@ const underFiles = email === 'admin@decathlon.com'
     setSelectedIP('');
   };
 
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
   const selectedData = overProvisioned[selectedIP] || underProvisioned[selectedIP];
 
   return (
     <div className={styles.container}>
+      {/* Logout Icon */}
+      <div className={styles.logoutContainer}>
+        <Tooltip title="Logout">
+          <IconButton onClick={handleLogout} sx={{ color: 'white' }}>
+            <LogoutIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
+
       <div>
         <Header email={email} />
         <div className={styles.cards}>
