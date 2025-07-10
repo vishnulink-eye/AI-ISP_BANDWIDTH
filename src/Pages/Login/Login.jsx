@@ -41,26 +41,50 @@ const Login = ({ onLoginSuccess }) => {
     event.preventDefault();
   };
 
-  const handleLogin = () => {
-    setError('');
-    if (tab === 0) {
-      if (email === 'admin@linkeye.ai' && passwordOrOtp === 'admin123') {
+  // const handleLogin = () => {
+  //   setError('');
+  //   if (tab === 0) {
+  //     if (email === 'admin@linkeye.ai' && passwordOrOtp === 'admin123') {
        
-        onLoginSuccess(); 
-        navigate('/');
-      } else {
-        setError('Invalid email or password.');
-      }
-    } else {
-      if (email === 'admin@linkeye.ai' && passwordOrOtp === '123456') {
+  //       onLoginSuccess(); 
+  //       navigate('/');
+  //     } else {
+  //       setError('Invalid email or password.');
+  //     }
+  //   } else {
+  //     if (email === 'admin@linkeye.ai' && passwordOrOtp === '123456') {
         
-        onLoginSuccess(); 
-        navigate('/');
-      } else {
-        setError('Invalid email or OTP.');
-      }
-    }
-  };
+  //       onLoginSuccess(); 
+  //       navigate('/');
+  //     } else {
+  //       setError('Invalid email or OTP.');
+  //     }
+  //   }
+  // };
+
+const handleLogin = () => {
+  setError('');
+
+  const isPasswordLogin = tab === 0;
+
+  const validCredentials = [
+    { email: 'admin@titan.com', password: 'admin123', otp: '123456' },
+    { email: 'admin@decathlon.com', password: 'decathlon123', otp: '654321' }
+  ];
+
+  const match = validCredentials.find(user =>
+    user.email === email &&
+    (isPasswordLogin ? user.password === passwordOrOtp : user.otp === passwordOrOtp)
+  );
+
+  if (match) {
+    onLoginSuccess(email); 
+    navigate('/');
+  } else {
+    setError(`Invalid email or ${isPasswordLogin ? 'password' : 'OTP'}.`);
+  }
+};
+
 
   return (
     <div className={styles.container}>

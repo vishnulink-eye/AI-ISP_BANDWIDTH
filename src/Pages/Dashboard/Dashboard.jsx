@@ -7,13 +7,21 @@ import LinkCard from '../../components/LinkCard/LinkCard';
 import RecommendationsCard from '../../components/RecommendationsCard/RecommendationsCard';
 import styles from './Dashboard.module.css';
 
-const Dashboard = () => {
+const Dashboard = ({email}) => {
   const [overProvisioned, setOverProvisioned] = useState({});
   const [underProvisioned, setUnderProvisioned] = useState({});
   const [selectedIP, setSelectedIP] = useState('');
 
-  const overFiles = import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
-  const underFiles = import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
+  // const overFiles = import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
+  // const underFiles = import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
+
+  const overFiles = email === 'admin@decathlon.com'
+  ? import.meta.glob('../../Over-Provisioned-decathlon/*.json', { eager: true })
+  : import.meta.glob('../../Over-Provisioned/*.json', { eager: true });
+
+const underFiles = email === 'admin@decathlon.com'
+  ? import.meta.glob('../../Under-Provisioned-decathlon/*.json', { eager: true })
+  : import.meta.glob('../../Under-Provisioned/*.json', { eager: true });
 
   useEffect(() => {
     const extractIPData = (fileMap) => {
@@ -43,7 +51,7 @@ const Dashboard = () => {
   return (
     <div className={styles.container}>
       <div>
-        <Header />
+        <Header email={email} />
         <div className={styles.cards}>
           <LinkCard
             title="Over provisioned Links"
