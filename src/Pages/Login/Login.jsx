@@ -172,7 +172,7 @@ const handleLogin = () => {
   </div>
 
   <p className={styles.footer}>
-    Need access? <span onClick={() => alert('Contact administrator clicked!')}>Contact your administrator</span>
+    Need access? <span >Contact your administrator</span>
   </p>
 </div>
 
