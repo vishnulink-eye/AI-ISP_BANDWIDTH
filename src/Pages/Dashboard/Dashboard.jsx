@@ -1,7 +1,4 @@
 
-
-
-
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import LinkCard from '../../components/LinkCard/LinkCard';
@@ -29,17 +26,39 @@ const Dashboard = ({ email }) => {
   useEffect(() => {
     const extractIPData = (fileMap) => {
       const ipDataMap = {};
+
       Object.entries(fileMap).forEach(([path, mod]) => {
         const ip = path.split('/').pop().replace('.json', '');
-        const jsonData = mod.default;
-        ipDataMap[ip] = Array.isArray(jsonData) ? jsonData[0] : jsonData;
+        const jsonData = Array.isArray(mod.default) ? mod.default[0] : mod.default;
+
+        if (email === 'admin@decathlon.com') {
+          const aiAnalysis = jsonData?.ai_analysis || '';
+
+          const locationMatch = aiAnalysis.match(/\*\*Location\*\*: (.+)/);
+          const vendorMatch = aiAnalysis.match(/\*\*Vendor\*\*: (.+)/);
+          const linkTypeMatch = aiAnalysis.match(/\*\*Link Type\*\*: (.+)/);
+
+          const location = locationMatch?.[1]?.trim();
+          const vendor = vendorMatch?.[1]?.trim();
+          const linkType = linkTypeMatch?.[1]?.trim();
+
+          if (linkType !== 'ILL') return; 
+
+          if (location && vendor) {
+            const label = `${location} - ${vendor} (${ip})`;
+            ipDataMap[label] = jsonData;
+          }
+        } else {
+          ipDataMap[ip] = jsonData;
+        }
       });
+
       return ipDataMap;
     };
 
     setOverProvisioned(extractIPData(overFiles));
     setUnderProvisioned(extractIPData(underFiles));
-  }, []);
+  }, [email]);
 
   const handleIPSelect = (ip) => {
     setSelectedIP(ip);

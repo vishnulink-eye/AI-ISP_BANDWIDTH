@@ -59,7 +59,10 @@
 import React from 'react';
 import styles from './LinkCard.module.css';
 
-const LinkCard = ({ title = 'Links', links = [], onSelectIP = () => {}, selectedIP }) => {
+const LinkCard = ({ title = 'Links', links = [], onSelectIP = () => {}, selectedIP, data }) => {
+
+
+  
   return (
     <div className={styles.card}>
       <h3 className={styles.title}>{title}</h3>
