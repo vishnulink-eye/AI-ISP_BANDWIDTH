@@ -12,6 +12,8 @@ const Dashboard = ({ email }) => {
   const [overProvisioned, setOverProvisioned] = useState({});
   const [underProvisioned, setUnderProvisioned] = useState({});
   const [selectedIP, setSelectedIP] = useState('');
+  const [loadingAI, setLoadingAI] = useState(false);
+
   const navigate = useNavigate();
 
   // Conditional file loading based on email
@@ -60,9 +62,15 @@ const Dashboard = ({ email }) => {
     setUnderProvisioned(extractIPData(underFiles));
   }, [email]);
 
-  const handleIPSelect = (ip) => {
+ const handleIPSelect = (ip) => {
+  setSelectedIP('');
+  setLoadingAI(true);
+
+  setTimeout(() => {
     setSelectedIP(ip);
-  };
+    setLoadingAI(false);
+  }, 2000); 
+};
 
   const handleClose = () => {
     setSelectedIP('');
@@ -101,8 +109,16 @@ const Dashboard = ({ email }) => {
             onSelectIP={handleIPSelect}
           />
         </div>
+        {loadingAI && (
+  <div className={styles.aiLoader}>
+    <span className={styles.dot}></span>
+    <span className={styles.dot}></span>
+    <span className={styles.dot}></span>
+    <p className={styles.loadingText}>AI is analyzing the data...</p>
+  </div>
+)}
 
-        {selectedIP && selectedData && (
+        {!loadingAI && selectedIP && selectedData && (
           <div className={styles.recommendationWrapper}>
             <RecommendationsCard ip={selectedIP} data={selectedData} onClose={handleClose} />
           </div>
