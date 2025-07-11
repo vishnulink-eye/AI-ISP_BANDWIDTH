@@ -187,7 +187,7 @@
   }
   
   .textField :global(.MuiOutlinedInput-notchedOutline) {
-    border-color: #334155;
+    border-color: #edeff3  !important;
   }
   
   .textField :global(.Mui-focused .MuiOutlinedInput-notchedOutline) {
