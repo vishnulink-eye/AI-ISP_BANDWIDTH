@@ -16,7 +16,7 @@ const Header = ({ email }) => {
       <h1>ISP Bandwidth Recommendation</h1>
       <div className={styles.subHeader}>
         <span>Customer: {customerName}</span>
-        <span>Time Period: Quarter - 1</span>
+        <span>Time Period: Jan - Mar (2025)</span>
       </div>
     </div>
   );
